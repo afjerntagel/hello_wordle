@@ -6,7 +6,6 @@ A small python script that generates tuples of start words for wordle.
 Words of specified length are selected from dictionary file.
 Only words with disjoint letters are selected.
 Startwords may include anagrams.
-Startwords may include anagrams.
 
 options:
   -h, --help            show this help message and exit
