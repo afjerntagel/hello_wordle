@@ -18,14 +18,10 @@ def areNotDisjoint(anagramList):
         return False
 
 
-def get_anagram_dict(file_name, number_of_characters, allowedCharacters=None):
+def get_anagram_dict(file_name, number_of_characters, allowedCharacters):
     anagram_dict=dict()
 
-    if (allowedCharacters == None):
-        allowedCharacters = re.compile("^[abcdefghijklmnopqrstuvwxyzåäö]+$")
-    else:
-        allowedCharacters = re.compile(f"^[{allowedCharacters}]+$")
-
+    allowedCharacters = re.compile(f"^[{allowedCharacters}]+$")
     dont_allow_repetitions        = re.compile(r'^(?!.*(.)(\1)).*$')
 
     try:
@@ -60,8 +56,10 @@ def main():
     # Add number of desired word groups
     parser.add_argument('-n', '--numberOfWordGroups', type=int, help='Number of word groups. Default is 2. 4 or above requieres patience or a strong computer.', default=2)
    
+
+    default_charset="abcdefghijklmnopqrstuvwxyzåäö"
     # Add charset
-    parser.add_argument('-ac', '--allowedCharacters', help='If specified, only words consisting of the specified characters are allowed. Default is \'abcdefghijklmnopqrstuvxyzåäö\'', default=".")
+    parser.add_argument('-ac', '--allowedCharacters', help='If specified, only words consisting of the specified characters are allowed. Default is \'abcdefghijklmnopqrstuvxyzåäö\'', default=f"{default_charset}")
 
     # Add name of output directory
     parser.add_argument('-od', '--outputDirectory', help='If specified, output files will be created in this directory. Default is \'.\'', default=".")
